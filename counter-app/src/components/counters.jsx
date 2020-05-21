@@ -15,34 +15,16 @@ class Counters extends Component {
         ]
     }
 
-    handleIncrement = () => {
+    handleIncrement = (counterId) => {
 
-        this.setState(
-            {
-                value: this.state.value + 1
-            }
-        );
+        const counter = this.state.counters.filter(c => c.id === counterId);
+        counter.value = counter.value + 1;
+
     }
 
-    doHandleIncrement = () => {
-        this.handleIncrement()
-    }
-
-
-    handleDelete = () => {
-
-        this.setState(
-            {
-                value: this.state.value - 1
-            }
-        );
-    }
-
-    doHandleDelete = counterId => {
-        console.log(counterId)
-
+    handleDelete = counterId => {
         const counters = this.state.counters.filter(c => c.id !== counterId);
-        this.setState(counters);
+        this.setState({ counters });
 
     }
 
@@ -52,7 +34,7 @@ class Counters extends Component {
             <React.Fragment>
                 {
                     this.state.counters.map(counter =>
-                        <Counter key={counter.id} id={counter.id} value={counter.value} onIncrement={this.doHandleIncrement} onDelete={this.doHandleDelete} selected />
+                        <Counter key={counter.id} counter={counter} onIncrement={this.handleIncrement} onDelete={this.handleDelete} selected />
                     )}
             </React.Fragment>
         );
