@@ -15,14 +15,16 @@ class MoviesTable extends Component {
     ]
     render() {
         const { movies, onDelete, onLike, sortColumn, onSort } = this.props;
-        return (<table className="table">
+        return (
+            <table className="table">
 
-            <TableHeader
-                columns={this.columns}
-                sortColumn={sortColumn}
-                onSort={onSort} />
-            <TableBody data={movies} columns={this.columns} onLike={onLike} onDelete={onDelete} />
-        </table>);
+                <TableHeader
+                    columns={this.columns}
+                    sortColumn={sortColumn}
+                    onSort={onSort} />
+                <TableBody data={movies} columns={this.columns} onLike={onLike} onDelete={onDelete} />
+            </table>
+        );
     }
 }
 export default MoviesTable;
