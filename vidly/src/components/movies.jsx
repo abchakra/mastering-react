@@ -5,7 +5,8 @@ import Pagination from './pagination';
 class Movies extends Component {
     state = {
         movies: getMovies(),
-        pageSize: 3
+        pageSize: 3,
+        currentPage: 1
     }
 
     handleLiked = movie => {
@@ -25,7 +26,7 @@ class Movies extends Component {
         })
     }
     handlePageChange = page => {
-        console.log(page)
+        this.setState({ currentPage: page })
     }
 
     render() {
@@ -62,6 +63,7 @@ class Movies extends Component {
                         </tbody>
                     </table>
                     <Pagination
+                        currentPage={this.state.currentPage}
                         itemsCount={movieCount}
                         pageSize={this.state.pageSize}
                         onPageChange={this.handlePageChange}
