@@ -7,10 +7,30 @@ class LoginForm extends Component {
       username: "",
       password: "",
     },
+    errors: {},
+  };
+
+  validate = () => {
+    const errors = {};
+
+    const { account } = this.state;
+
+    if (account.username.trim() === "") {
+      errors.username = "Username is required";
+    }
+    if (account.password.trim() === "") {
+      errors.password = "password is required";
+    }
+    return Object.keys(errors).length === 0 ? null : errors;
   };
   handleSubmit = (e) => {
     e.preventDefault();
 
+    const errors = this.validate();
+    console.log(errors);
+    this.setState({ errors });
+
+    if (errors) return;
     console.log("Submitted");
   };
 
@@ -40,7 +60,9 @@ class LoginForm extends Component {
             onChange={this.handleChange}
             type="password"
           />
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary" onClick={this.handleSubmit}>
+            Login
+          </button>
         </form>
       </div>
     );
