@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Movies from './components/movies';
 import NavBar from './components/navbar';
-import { Switch, Route, Redirect } from 'react-router-dom';
 import Customers from './components/customers';
 import Rentals from './components/rentals';
 import NotFound from './components/notFound';
+import './App.css';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="/customers" component={Customers} />
           <Route path="/rentals" component={Rentals} />
           <Route path="/not-found" exact component={NotFound} />
-          <Route path="/" exact component={Movies} />
+          <Redirect from="/" exact to="/movies" />
           <Redirect to="/not-found" />
         </Switch>
 
