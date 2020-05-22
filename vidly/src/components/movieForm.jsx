@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 
 
 class MovieForm extends Component {
-    state = {}
     render() {
-        return (<div>Movie form {this.props.movie._id}</div>);
+        const { match, history } = this.props;
+        return (
+            <React.Fragment>
+                <div>Movie form {match.params.id}</div>
+                <button className="btn btn-primary" onClick={() => history.push('/movies')}>Save</button>
+            </React.Fragment>
+        );
     }
 }
 
