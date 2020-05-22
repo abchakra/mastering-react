@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 
 class LoginForm extends Component {
-  state = {};
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log("Submitted");
+  };
+
   render() {
     return (
       <div>
