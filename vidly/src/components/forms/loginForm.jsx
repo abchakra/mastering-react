@@ -23,7 +23,7 @@ class LoginForm extends Component {
     const errors = {};
     // console.log(error.details[0]);
     for (let item of error.details) {
-      console.log(item);
+      // console.log(item);
       errors[item.path[0]] = item.message;
     }
     return errors;
@@ -39,15 +39,17 @@ class LoginForm extends Component {
     if (errors) return;
     console.log("Submitted");
   };
-  validateProperty = ({ name, value }) => {
-    if (name === "username") {
-      if (value.trim() === "") return "Username is required";
-    }
 
-    if (name === "password") {
-      if (value.trim() === "") return "Password is required";
-    }
+  validateProperty = ({ name, value }) => {
+    const obj = { [name]: value };
+    // console.log(this.schema._usernames._byKey.entries());
+    const schema = Joi.object().keys({
+      // [name]: this.schema[name],
+      username: Joi.string().required().label("Username"),
+    });
+    schema.validate(obj);
   };
+
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
@@ -81,7 +83,11 @@ class LoginForm extends Component {
             type="password"
             error={errors.password}
           />
-          <button className="btn btn-primary" onClick={this.handleSubmit}>
+          <button
+            disabled={this.validate()}
+            className="btn btn-primary"
+            onClick={this.handleSubmit}
+          >
             Login
           </button>
         </form>
