@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 class Rentals extends Component {
-    state = {}
-    render() {
-        return (<div>Rentals</div>);
-    }
+  state = {};
+  render() {
+    return <div>Rentals</div>;
+  }
 }
 
 export default Rentals;
