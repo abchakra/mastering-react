@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Input from "../common/input";
+import Joi from "@hapi/joi";
 
 class LoginForm extends Component {
   state = {
@@ -10,25 +11,29 @@ class LoginForm extends Component {
     errors: {},
   };
 
+  schema = Joi.object().keys({
+    username: Joi.string().required().label("Username"),
+    password: Joi.string().required().label("Password"),
+  });
+
   validate = () => {
+    const { error } = this.schema.validate(this.state.account);
+
+    if (!error) return null;
     const errors = {};
-
-    const { account } = this.state;
-
-    if (account.username.trim() === "") {
-      errors.username = "Username is required";
+    // console.log(error.details[0]);
+    for (let item of error.details) {
+      console.log(item);
+      errors[item.path[0]] = item.message;
     }
-    if (account.password.trim() === "") {
-      errors.password = "password is required";
-    }
-    return Object.keys(errors).length === 0 ? null : errors;
+    return errors;
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
 
     const errors = this.validate();
-    console.log(errors);
+    // console.log(errors);
     this.setState({ errors: errors || {} });
 
     if (errors) return;
