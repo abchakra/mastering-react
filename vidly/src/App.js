@@ -6,7 +6,7 @@ import NavBar from './components/navbar';
 import Customers from './components/customers';
 import Rentals from './components/rentals';
 import NotFound from './components/notFound';
-import MovieForm from './components/movieForm';
+import MovieForm from './components/forms/movieForm';
 import LoginForm from './components/forms/loginForm';
 import Registration from './components/forms/registerationForm';
 

@@ -28,7 +28,7 @@ class Registration extends Forms {
     return (
       <div>
         <h1>Login</h1>
-        <form action="">
+        <form onSubmit={this.handleSubmit}>
           {this.renderInput("username", "Username")}
           {this.renderInput("password", "Password", "password")}
           {this.renderInput("fullname", "Name")}

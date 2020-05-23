@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Input from "./input";
-
+import Select from "./select";
 class Forms extends Component {
   state = {
     data: {},
@@ -68,15 +68,25 @@ class Forms extends Component {
   };
   renderButton = (label) => {
     return (
-      <button
-        disabled={this.validate()}
-        className="btn btn-primary"
-        onClick={this.handleSubmit}
-      >
+      <button disabled={this.validate()} className="btn btn-primary">
         {label}
       </button>
     );
   };
+  renderSelect(name, label, options) {
+    const { data, errors } = this.state;
+
+    return (
+      <Select
+        name={name}
+        value={data[name]}
+        label={label}
+        options={options}
+        onChange={this.handleChange}
+        error={errors[name]}
+      />
+    );
+  }
 }
 
 export default Forms;
