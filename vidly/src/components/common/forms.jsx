@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Joi from "@hapi/joi";
+import Input from "./input";
 
 class Forms extends Component {
   state = {
@@ -50,6 +51,31 @@ class Forms extends Component {
     const data = { ...this.state.data };
     data[input.name] = input.value;
     this.setState({ data, errors });
+  };
+
+  renderInput = (name, label, type = "text") => {
+    const { data, errors } = this.state;
+    return (
+      <Input
+        name={name}
+        value={data[name]}
+        label={label}
+        onChange={this.handleChange}
+        type={type}
+        error={errors[name]}
+      />
+    );
+  };
+  renderButton = (label) => {
+    return (
+      <button
+        disabled={this.validate()}
+        className="btn btn-primary"
+        onClick={this.handleSubmit}
+      >
+        {label}
+      </button>
+    );
   };
 }
 
