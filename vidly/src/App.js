@@ -8,6 +8,7 @@ import Rentals from './components/rentals';
 import NotFound from './components/notFound';
 import MovieForm from './components/movieForm';
 import LoginForm from './components/forms/loginForm';
+import Registration from './components/forms/registerationForm';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/movies" component={Movies} />
           <Route path="/customers" component={Customers} />
           <Route path="/rentals" component={Rentals} />
+          <Route path="/register" component={Registration} />
           <Route path="/not-found" exact component={NotFound} />
           <Redirect from="/" exact to="/movies" />
           <Redirect to="/not-found" />

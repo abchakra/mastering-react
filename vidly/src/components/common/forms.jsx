@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Joi from "@hapi/joi";
 import Input from "./input";
 
 class Forms extends Component {
@@ -18,6 +17,7 @@ class Forms extends Component {
       // console.log(item);
       errors[item.path[0]] = item.message;
     }
+    console.log(errors);
     return errors;
   };
 
@@ -33,13 +33,13 @@ class Forms extends Component {
   };
 
   validateProperty = ({ name, value }) => {
-    const obj = { [name]: value };
-    // console.log(this.schema._usernames._byKey.entries());
-    const schema = Joi.object().keys({
-      // [name]: this.schema[name],
-      username: Joi.string().required().label("Username"),
-    });
-    schema.validate(obj);
+    // const obj = { [name]: value };
+    // console.log(obj, this.schema);
+    // const { error } = this.schema.validate(obj);
+    // // const schema = { [name]: this.schema[name] };
+    // // const { error } = Joi.validate(obj, schema);
+    // return error ? error.details[0].message : null;
+    return null;
   };
 
   handleChange = ({ currentTarget: input }) => {
