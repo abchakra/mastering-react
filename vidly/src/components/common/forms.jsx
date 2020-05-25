@@ -8,6 +8,7 @@ class Forms extends Component {
   };
 
   validate = () => {
+    // console.log(this.state.data);
     const { error } = this.schema.validate(this.state.data);
 
     if (!error) return null;

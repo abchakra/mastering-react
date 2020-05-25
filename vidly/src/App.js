@@ -9,11 +9,13 @@ import NotFound from './components/notFound';
 import MovieForm from './components/forms/movieForm';
 import LoginForm from './components/forms/loginForm';
 import Registration from './components/forms/registerationForm';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
 
     <React.Fragment>
+      <ToastContainer />
       <NavBar />
       <main className="container">
 
